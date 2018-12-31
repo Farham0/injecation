@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="testDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'testDatabase.dbo.categories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="categories">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="PicPath" />
+    </Key>
+    <Property Name="Id" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PicPath" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'testDatabase.dbo.products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="BuyLink" />
+      <PropertyRef Name="Size" />
+      <PropertyRef Name="categoryId" />
+    </Key>
+    <Property Name="Id" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BuyLink" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Size" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="categoryId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="testDatabaseModelStoreContainer">
+    <EntitySet Name="categories" EntityType="Self.categories" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [categories].[Id] AS [Id], 
+    [categories].[Name] AS [Name], 
+    [categories].[PicPath] AS [PicPath]
+    FROM [dbo].[categories] AS [categories]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="products" EntityType="Self.products" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [products].[Id] AS [Id], 
+    [products].[Name] AS [Name], 
+    [products].[Price] AS [Price], 
+    [products].[BuyLink] AS [BuyLink], 
+    [products].[Size] AS [Size], 
+    [products].[categoryId] AS [categoryId]
+    FROM [dbo].[products] AS [products]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
